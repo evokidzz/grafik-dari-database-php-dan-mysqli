@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>MEMBUAT GRAFIK DARI DATABASE MYSQL DENGAN PHP DAN CHART.JS - www.malasngoding.com</title>
 	<script type="text/javascript" src="chartjs/Chart.js"></script>
 </head>
+
 <body>
 	<style type="text/css">
-	body{
-		font-family: roboto;
-	}
+		body {
+			font-family: roboto;
+		}
 
-	table{
-		margin: 0px auto;
-	}
+		table {
+			margin: 0px auto;
+		}
 	</style>
 
 
 	<center>
-		<h2>MEMBUAT GRAFIK DARI DATABASE MYSQL DENGAN PHP DAN CHART.JS<br/>- www.malasngoding.com -</h2>
+		<h2>MEMBUAT GRAFIK DARI DATABASE MYSQL DENGAN PHP DAN CHART.JS<br />- www.malasngoding.com -</h2>
 	</center>
 
 
-	<?php 
+	<?php
 	include 'koneksi.php';
 	?>
 
@@ -29,10 +31,10 @@
 		<canvas id="myChart"></canvas>
 	</div>
 
-	<br/>
-	<br/>
+	<br />
+	<br />
 
-	<table border="1">
+	<!-- <table border="1">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -42,22 +44,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php 
-			$no = 1;
-			$data = mysqli_query($koneksi,"select * from mahasiswa");
-			while($d=mysqli_fetch_array($data)){
-				?>
-				<tr>
-					<td><?php echo $no++; ?></td>
-					<td><?php echo $d['nama']; ?></td>
-					<td><?php echo $d['nim']; ?></td>
-					<td><?php echo $d['fakultas']; ?></td>
-				</tr>
-				<?php 
-			}
-			?>
+	
 		</tbody>
-	</table>
+	</table> -->
 
 
 	<script>
@@ -69,34 +58,34 @@
 				datasets: [{
 					label: '',
 					data: [
-					<?php 
-					$jumlah_teknik = mysqli_query($koneksi,"select * from mahasiswa where fakultas='teknik'");
-					echo mysqli_num_rows($jumlah_teknik);
-					?>, 
-					<?php 
-					$jumlah_ekonomi = mysqli_query($koneksi,"select * from mahasiswa where fakultas='ekonomi'");
-					echo mysqli_num_rows($jumlah_ekonomi);
-					?>, 
-					<?php 
-					$jumlah_fisip = mysqli_query($koneksi,"select * from mahasiswa where fakultas='fisip'");
-					echo mysqli_num_rows($jumlah_fisip);
-					?>, 
-					<?php 
-					$jumlah_pertanian = mysqli_query($koneksi,"select * from mahasiswa where fakultas='pertanian'");
-					echo mysqli_num_rows($jumlah_pertanian);
-					?>
+						<?php
+						$jumlah_teknik = mysqli_query($koneksi, "select * from mahasiswa where fakultas='teknik'");
+						echo mysqli_num_rows($jumlah_teknik);
+						?>,
+						<?php
+						$jumlah_ekonomi = mysqli_query($koneksi, "select * from mahasiswa where fakultas='ekonomi'");
+						echo mysqli_num_rows($jumlah_ekonomi);
+						?>,
+						<?php
+						$jumlah_fisip = mysqli_query($koneksi, "select * from mahasiswa where fakultas='fisip'");
+						echo mysqli_num_rows($jumlah_fisip);
+						?>,
+						<?php
+						$jumlah_pertanian = mysqli_query($koneksi, "select * from mahasiswa where fakultas='pertanian'");
+						echo mysqli_num_rows($jumlah_pertanian);
+						?>
 					],
 					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)'
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)'
 					],
 					borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)'
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)'
 					],
 					borderWidth: 1
 				}]
@@ -105,7 +94,7 @@
 				scales: {
 					yAxes: [{
 						ticks: {
-							beginAtZero:true
+							beginAtZero: true
 						}
 					}]
 				}
@@ -113,4 +102,5 @@
 		});
 	</script>
 </body>
+
 </html>
